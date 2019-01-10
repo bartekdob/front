@@ -1,3 +1,28 @@
-<p>
-  hotels-list works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <table *ngIf="hotels && hotels.length > 0; else noHotelsInfo" class="cs-table table table-striped">
+        <thead>
+        <tr>
+          <th>Hotel Name</th>
+          <th>City</th>
+          <th>Street</th>
+          <th>Building Nr</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let hotel of hotels; let i = index">
+          <td>{{hotel.name}}</td>
+          <td>{{hotel.city}}</td>
+          <td>{{hotel.street}}</td>
+          <td>{{hotel.buildingNr}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <ng-template #noHotelsInfo>
+        <div class="no-cars-info">
+          <p>Currently no hotels in our service</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
