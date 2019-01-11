@@ -5,4 +5,5 @@ export interface Hotel {
   buildingNr: String;
   zipCode: String;
   name: String;
+  photo: String;
 }
