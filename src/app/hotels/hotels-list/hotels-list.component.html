@@ -1,29 +1,24 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-12">
-      <table *ngIf="hotels && hotels.length > 0; else noHotelsInfo" class="cs-table table table-striped">
-        <thead>
-        <tr>
-          <th>Hotel Name</th>
-          <th>City</th>
-          <th>Street</th>
-          <th>Building Nr</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let hotel of hotels; let i = index">
-          <td>{{hotel.name}}</td>
-          <td>{{hotel.city}}</td>
-          <td>{{hotel.street}}</td>
-          <td>{{hotel.buildingNr}}</td>
-          <td><img src="data:image/png;base64,{{hotel.photo}}" height="60" width="80" alt=""/></td>
-        </tr>
-        </tbody>
-      </table>
+ <div class="py-4 bg-light" *ngIf="hotels && hotels.length > 0; else noHotelsInfo">
+    <div class="container">
+      <div class="row">
+        <div *ngFor="let hotel of hotels; let i=index" class="col-md-4 p-3">
+          <div  class="card box-shadow">
+            <img class="card-img-top" src="data:image/png;base64,{{hotel.photo}}">
+            <div class="card-body">
+              <p class="card-text">{{hotel.name}} <br> {{hotel.city}}, {{hotel.street}} {{hotel.buildingNr}}  </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group ">
+                  <button type="button" (click)="goToHotelDetails(hotel)" class="btn btn-sm btn-outline-primary btn-group-lg">Rezerwuj</button>
+                </div> <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
       <ng-template #noHotelsInfo>
         <div class="no-cars-info">
           <p>Currently no hotels in our service</p>
         </div>
       </ng-template>
-    </div>
-  </div>
