@@ -6,4 +6,5 @@ export interface Hotel {
   zipCode: String;
   name: String;
   photo: String;
+  roomPhotos: String[];
 }

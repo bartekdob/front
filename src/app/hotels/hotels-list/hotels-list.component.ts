@@ -26,6 +26,6 @@ export class HotelsListComponent implements OnInit {
   }
 
   goToHotelDetails(hotel: Hotel): void {
-    this.router.navigate(['/hotels', 1]);
+    this.router.navigate(['/hotels', hotel.id]);
   }
 }

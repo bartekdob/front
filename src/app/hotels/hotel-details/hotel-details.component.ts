@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {HotelService} from "../hotel.service";
+import {Hotel} from "../models/hotel";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-hotel-details',
@@ -7,9 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HotelDetailsComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private hotelService: HotelService, private route: ActivatedRoute) {
   }
 
-}
+  private hotel: Hotel;
+  private carouselIndex: number;
+
+  ngOnInit() {
+    this.carouselIndex = 0;
+    this.loadHotel();
+  }
+
+  loadHotel() {
+    this.hotelService.getHotelDetails(this.route.snapshot.params['id']).subscribe((hotel) => this.hotel = hotel);
+  }
+
+  carouselNext(): void {
+    this.carouselIndex++;
+    if (this.carouselIndex >= this.hotel.roomPhotos.length) {
+      this.carouselIndex = 0;
+    }
+  }
+
+    carouselPrev(): void {
+      this.carouselIndex--;
+      if (this.carouselIndex < 0) {
+        this.carouselIndex = this.hotel.roomPhotos.length - 1;
+      }
+    }
+
+  }
+

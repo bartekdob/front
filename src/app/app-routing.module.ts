@@ -5,7 +5,7 @@ import {WelcomePageComponent} from './shared/welcome-page/welcome-page.component
 
 const routes: Route[] = [
   {path: '', pathMatch: 'full', component: WelcomePageComponent},
-  {path: 'hotels', pathMatch: 'full', loadChildren: 'app/hotels/hotels.module#HotelsModule'},
+  {path: 'hotels', loadChildren: 'app/hotels/hotels.module#HotelsModule'},
   {path: '**', component: PageNotFoundComponent}
   ]
 
