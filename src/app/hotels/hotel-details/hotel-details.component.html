@@ -1,25 +1,69 @@
-<div *ngIf="hotel">
-<div *ngFor="let photo of hotel.roomPhotos">
-  <img src="data:image/png;base64,{{photo}}" height="60" width="80" alt=""/>
-</div>
-</div>
-
-
-
-<div class="py-5">
-  <div class="container">
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h2 class="text-center">{{hotel.name}}</h2>
+      <h4 class="text-center ">{{hotel.city}}, {{hotel.street}} {{hotel.buildingNr}}</h4>
+    </div>
+    <div class="col-md-8 d-flex">
+      <img src="data:image/png;base64,{{hotel.roomPhotos[carouselIndex]}}"/>
+    </div>
     <div class="row">
-      <div class="col-md-12">
-        <div class="carousel slide" data-ride="carousel" id="carousel" >
-          <div class="carousel-inner">
-            <div class="carousel-item active"> <img class="d-block img-fluid w-100" src="data:image/png;base64,{{hotel.roomPhotos[carouselIndex]}}" height="200" width="300">
-            </div>
-          </div>  <span (click)="carouselPrev()" class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span>
-          <span (click)="carouselNext()" class="carousel-control-next-icon"></span> <span class="sr-only">Next</span>
+      <div *ngFor="let rP of hotel.roomPhotos; let i = index" class="col-sm-1">
+        <img class="img-thumbnail" (click)="changeRoomPhoto(i)" src="data:image/png;base64,{{rP}}"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 text-justify">
+        {{hotel.description}}
+      </div>
+    </div>
+    <table class="my-5 table table-striped table-hover">
+      <thead>
+      <tr>
+        <th scope="col">Nazwa Standardu</th>
+        <th scope="col">Opis</th>
+        <th scope="col">Cena za noc</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let roomType of hotel.roomTypes">
+        <td>{{roomType.roomTypeName}}</td>
+        <td>{{roomType.description}}</td>
+        <td>{{roomType.prize}}</td>
+        <td class="font-weight-bold"> Szczegóły </td>
+        <td class="font-weight-bold"> Rezerwuj </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!--
+  <div *ngIf="hotel">
+  <div *ngFor="let photo of hotel.roomPhotos">
+    <img src="data:image/png;base64,{{photo}}" height="60" width="80" alt=""/>
+  </div>
+  </div>
+
+
+
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="carousel slide" data-ride="carousel" id="carousel" >
+            <div class="carousel-inner">
+              <div class="carousel-item active"> <img class="d-block img-fluid w-100" src="data:image/png;base64,{{hotel.roomPhotos[carouselIndex]}}" height="200" width="300">
+              </div>
+            </div>  <span (click)="carouselPrev()" class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span>
+            <span (click)="carouselNext()" class="carousel-control-next-icon"></span> <span class="sr-only">Next</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
 
+  -->

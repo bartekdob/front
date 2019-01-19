@@ -1,3 +1,5 @@
+import {RoomType} from './RoomType';
+
 export interface Hotel {
   id: Number;
   city: String;
@@ -7,4 +9,6 @@ export interface Hotel {
   name: String;
   photo: String;
   roomPhotos: String[];
+  roomTypes: RoomType[];
+  description: String;
 }

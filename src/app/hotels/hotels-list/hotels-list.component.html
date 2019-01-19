@@ -1,4 +1,6 @@
- <div class="py-4 bg-light" *ngIf="hotels && hotels.length > 0; else noHotelsInfo">
+
+
+<div class="py-4" *ngIf="hotels && hotels.length > 0; else noHotelsInfo">
     <div class="container">
       <div class="row">
         <div *ngFor="let hotel of hotels; let i=index" class="col-md-4 p-3">

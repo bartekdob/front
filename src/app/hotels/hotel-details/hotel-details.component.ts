@@ -39,5 +39,9 @@ export class HotelDetailsComponent implements OnInit {
       }
     }
 
+  changeRoomPhoto(i: number): void {
+    this.carouselIndex = i;
+  }
+
   }
 
