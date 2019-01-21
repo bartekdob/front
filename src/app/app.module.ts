@@ -8,6 +8,10 @@ import { HotelsComponent } from './hotels/hotels.component';
 import {HotelService} from './hotels/hotel.service';
 import {HttpModule} from '@angular/http';
 import {CoreModule} from './core/core.module';
+import {AuthService} from './auth/auth.service';
+import {LoginModule} from './login/login.module';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {Interceptor} from './core/app.interceptor';
 
 
 @NgModule({
@@ -19,9 +23,10 @@ import {CoreModule} from './core/core.module';
     HttpModule,
     AppRoutingModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    LoginModule
   ],
-  providers: [HotelService],
+  providers: [HotelService, AuthService, {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

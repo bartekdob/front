@@ -18,7 +18,7 @@ export class HotelService {
       map(res => res.json()));
   }
 
-  getHotelDetails(hotelId: Number): Observable<Hotel>{
+  getHotelDetails(hotelId: Number): Observable<Hotel> {
     return this.http.get(`${this.apiUrl}/${hotelId}`).pipe(
       map(res => res.json()));
   }
