@@ -1,0 +1,19 @@
+<div class="container py-sm-5">
+  <mat-card>
+    <mat-card-title>Rezerwuj</mat-card-title>
+    <mat-card-content class="row">
+      <mat-form-field class="example-full-width  px-sm-5">
+        <input matInput [min]="minDate" [matDatepicker]="dateFrom" placeholder="Od">
+        <mat-datepicker-toggle matSuffix [for]="dateFrom"></mat-datepicker-toggle>
+        <mat-datepicker #dateFrom></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [min]="minDate" [matDatepicker]="dateTo" placeholder="Do">
+        <mat-datepicker-toggle matSuffix [for]="dateTo"></mat-datepicker-toggle>
+        <mat-datepicker #dateTo></mat-datepicker>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+

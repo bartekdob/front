@@ -5,12 +5,14 @@ import { HotelsComponent } from './hotels.component';
 import {HotelsRoutingModule} from './hotels-routing.module';
 import {RouterModule} from '@angular/router';
 import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
+import {MatCardModule, MatDatepickerModule, MatFormFieldModule, MatIconModule, MatInputModule, MatTabsModule} from '@angular/material';
+import { ReservationComponent } from './reservation/reservation.component';
 
 @NgModule({
-  declarations: [HotelsListComponent, HotelsComponent, HotelDetailsComponent],
+  declarations: [HotelsListComponent, HotelsComponent, HotelDetailsComponent, ReservationComponent],
   imports: [
-    CommonModule, HotelsRoutingModule
+    CommonModule, HotelsRoutingModule, MatTabsModule, MatIconModule, MatCardModule, MatDatepickerModule, MatFormFieldModule, MatInputModule,
   ],
-  exports: [HotelsListComponent, HotelsComponent, HotelDetailsComponent]
+  exports: [HotelsListComponent, HotelsComponent, HotelDetailsComponent, ReservationComponent]
 })
 export class HotelsModule { }

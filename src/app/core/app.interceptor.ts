@@ -18,7 +18,6 @@ export class Interceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let authReq = req;
     const token: string = localStorage.getItem('token');
-    console.log('INTERCEPTOR XDDD');
     if (token != null) {
       authReq = req.clone({headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token)});
     }
@@ -36,7 +35,7 @@ export class Interceptor implements HttpInterceptor {
 
           if (error.status === 401) {
             //this.router.navigate(['login']);
-            console.log('nieprawidlowe dane logowania');
+            window.alert('nieprawidlowe dane logowania');
           }
         }
         let data = {};

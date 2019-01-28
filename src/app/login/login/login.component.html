@@ -1,14 +1,53 @@
-<!--
 <div class="container">
-  <div class="card card-container">
-    <h3 class="text-center">CARS SERVICE</h3>
-    <img id="profile-img" class="profile-img-card" src="assets/avatar.png"/>
-    <form class="form-signin">
-&lt;!&ndash;      <input [(ngModel)]="login" name="login" type="text" id="inputEmail" class="form-control" placeholder="Login">
-      <input [(ngModel)]="password" name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" >&ndash;&gt;
-      <button (click)="onSubmit()" class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+<mat-card class="example-card py-sm-5 col-sm-6">
+
+  <mat-card-header>
+
+    <mat-card-title>Login</mat-card-title>
+
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <form class="example-form">
+
+      <table class="example-full-width" cellspacing="0">
+
+        <tr>
+
+          <td>
+
+            <mat-form-field class="example-full-width">
+
+              <input matInput placeholder="Username" [(ngModel)]="login" name="login" required>
+
+            </mat-form-field>
+
+          </td>
+
+        </tr>
+
+        <tr>
+
+          <td><mat-form-field class="example-full-width">
+
+            <input matInput placeholder="Password" [(ngModel)]="password"type="password" name="password" required>
+
+          </mat-form-field></td>
+
+        </tr></table>
+
     </form>
-  </div>
+
+    <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+
+  </mat-card-content>
+
+  <mat-card-actions>
+
+    <button mat-raised-button (click)="onSubmit()" color="primary">Login</button>
+
+  </mat-card-actions>
+
+</mat-card>
 </div>
--->
-<button class="btn" (click)="onSubmit()"> login </button>

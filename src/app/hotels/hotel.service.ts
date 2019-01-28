@@ -14,11 +14,11 @@ export class HotelService {
   private apiUrl = 'http://localhost:8080/hotels';
 
   getHotels(): Observable<Hotel[]> {
-    return this.http.get(this.apiUrl).pipe();
+    return this.http.get<Hotel[]>(this.apiUrl).pipe();
   }
 
   getHotelDetails(hotelId: Number): Observable<Hotel> {
-    return this.http.get(`${this.apiUrl}/${hotelId}`).pipe();
+    return this.http.get<Hotel>(`${this.apiUrl}/${hotelId}`).pipe();
   }
 
 }

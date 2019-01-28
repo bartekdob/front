@@ -1,56 +1,25 @@
-<!--
-<div class="header">
-  <div class="levels">
-    <ng-content select="[levels]"></ng-content>
-  </div>
-
-  <div class="other-content">
-    <ng-content select="[content]"></ng-content>
-  </div>
-
-  <div class="other-content">
-    <ng-content select="[footer]"></ng-content>
-  </div>
-</div>
-
--->
-<!--
-
-  <ul class="list-inline">
-    <li class="list-inline-item">Lista Hoteli</li>
-    <li class="list-inline-item">Twoje Rezerwacje</li>
-    <li class="list-inline-item">Logowanie / Rejestracja</li>
-  </ul>
-<div class="container">
-<div class="row">
-  <div class="col-8">
-    <ul class="list-inline">
-      <li class="list-inline-item">Lista Hoteli</li>
-    </ul>
-  </div>
-  <div class="col-4 align-content-between">
-    <ul class="list-inline">
-      <li class="list-inline-item">Twoje Rezerwacje</li>
-      <li class="list-inline-item">Logowanie / Rejestracja</li>
-    </ul>
-  </div>
-</div>
-</div>
-
-<div class="container">
-  <ul class="list-inline align-content-around">
-    <li class="list-inline-item">Lista Hoteli</li>
-    <li class="list-inline-item">Twoje Rezerwacje</li>
-    <li class="list-inline-item">Logowanie / Rejestracja</li>
-  </ul>
-</div>
--->
-
-<div class="container-fluid sticky-top header">
+<!--<div class="container-fluid sticky-top header">
   <div class="d-flex flex-sm-row justify-content-between">
-    <div>Lista Hoteli</div>
-    <div>Lista Hoteli</div>
+    <div routerLink="/hotels">Lista Hoteli</div>
+    <div routerLink="/login">Zaloguj się</div>
     <div>Lista Hoteli</div>
   </div>
-</div>
-  <!--<span class="d-inline-block"> Lista hoteli </span> <span class="d-inline-block"> Twoje rezerwacje</span> <span class="d-inline-block"> Logowanie / Rejestracja</span>-->
+</div>-->
+
+<mat-toolbar class="sticky-top" color="primary">
+  <span (click)="navigate('')" class="clickable">
+  <mat-icon size="large" class="md-icon">hotel</mat-icon>
+  <span class="appName">Bookkaking.com</span>
+  </span>
+  <span class="example-spacer"></span>
+  <div *ngIf="isLoggedIn(); else notLoggedIn">
+    <!--<span>{{localStorage.getItem('username')}}</span>-->
+    <button mat-button (click)="logout()">Wyloguj</button>
+  </div>
+  <ng-template #notLoggedIn>
+    <div>
+      <button mat-button (click)="navigate('/login')" >Logowanie</button>
+      <button mat-button (click)="navigate('/register')" >Rejestracja</button>
+    </div>
+  </ng-template>
+</mat-toolbar>

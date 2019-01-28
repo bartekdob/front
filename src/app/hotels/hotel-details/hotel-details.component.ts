@@ -22,7 +22,8 @@ export class HotelDetailsComponent implements OnInit {
   }
 
   loadHotel() {
-    this.hotelService.getHotelDetails(this.route.snapshot.params['id']).subscribe((hotel) => this.hotel = hotel);
+    this.hotelService.getHotelDetails(this.route.snapshot.params['id']).subscribe(
+      (hotel) => this.hotel = hotel);
   }
 
   carouselNext(): void {
