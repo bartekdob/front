@@ -15,6 +15,7 @@ import {MaterialModulesImportModule} from './material-modules-import/material-mo
 import {MAT_DATE_LOCALE, MatIconModule, MatInputModule, MatNativeDateModule, MatToolbarModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ReservationService} from './reservation/reservation.service';
+import {ReservationModule} from './reservation/reservation.module';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import {ReservationService} from './reservation/reservation.service';
     SharedModule,
     CoreModule,
     LoginModule,
+    ReservationModule,
     BrowserAnimationsModule,
     MatNativeDateModule,
     MatInputModule,

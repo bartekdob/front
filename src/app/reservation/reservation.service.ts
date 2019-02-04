@@ -17,6 +17,8 @@ export class ReservationService {
     return this.http.post(this.apiUrl + '/reserve', reservation);
   }
 
-
+  getUsersReservations(): Observable<any> {
+    return this.http.get(this.apiUrl + '/userReservations');
+  }
 
 }

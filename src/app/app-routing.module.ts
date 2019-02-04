@@ -4,11 +4,13 @@ import {PageNotFoundComponent} from './shared/page-not-found/page-not-found.comp
 import {WelcomePageComponent} from './shared/welcome-page/welcome-page.component';
 import {LoginComponent} from './login/login/login.component';
 import {RegisterComponent} from './login/register/register.component';
+import {UserReservationsComponent} from './reservation/user-reservations/user-reservations.component';
 
 const routes: Route[] = [
   {path: '', pathMatch: 'full', component: WelcomePageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'myReservations', component: UserReservationsComponent},
   {path: 'hotels', loadChildren: 'app/hotels/hotels.module#HotelsModule'},
   {path: '**', component: PageNotFoundComponent}
   ]
