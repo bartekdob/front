@@ -12,8 +12,9 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {Interceptor} from './core/app.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModulesImportModule} from './material-modules-import/material-modules-import.module';
-import {MatIconModule, MatInputModule, MatNativeDateModule, MatToolbarModule} from '@angular/material';
+import {MAT_DATE_LOCALE, MatIconModule, MatInputModule, MatNativeDateModule, MatToolbarModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ReservationService} from './reservation/reservation.service';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
    // MatIconModule
     MaterialModulesImportModule
   ],
-  providers: [HotelService, AuthService,  {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}],
+  providers: [HotelService, AuthService, ReservationService, {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true},
+    {provide: MAT_DATE_LOCALE, useValue: 'pl-PL'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,6 +11,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router: Router, private authService: AuthService) { }
 
+  private username: String;
+
   ngOnInit() {
   }
 
@@ -19,14 +21,17 @@ export class HeaderComponent implements OnInit {
   }
 
   isLoggedIn(): boolean {
-    //return this.authService.isLoggedIn;
-    return localStorage.hasOwnProperty('token');
+    if(localStorage.hasOwnProperty('token'))
+    {
+      this.username = this.authService.currentUser;
+      return true;
+    }
+    return false;
   }
 
   logout(): void{
-    localStorage.removeItem('token');
-    localStorage.removeItem('username');
+    this.username = '';
     this.authService.logout();
-    this.router.navigate(["/"]);
+    this.router.navigate(['/']);
   }
 }

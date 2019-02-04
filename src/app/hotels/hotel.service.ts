@@ -3,6 +3,7 @@ import {Observable} from 'rxjs';
 import {Hotel} from './models/hotel';
 import {map} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
+import {Reservation} from '../reservation/models/Reservation';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,6 @@ export class HotelService {
   getHotelDetails(hotelId: Number): Observable<Hotel> {
     return this.http.get<Hotel>(`${this.apiUrl}/${hotelId}`).pipe();
   }
+
 
 }

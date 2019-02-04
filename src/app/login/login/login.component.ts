@@ -20,17 +20,11 @@ export class LoginComponent {
 
   onSubmit() {
     this.authService.login(this.login, this.password).subscribe(data => {
-      //  this.token.saveToken(data.token);
-      if (data.hasOwnProperty('message')) {
-        window.alert('Błędne dane');
-      } else {
         localStorage.setItem('token', data.token);
         this.authService.isLoggedIn = true;
         localStorage.setItem('username', data.username);
         this.authService.currentUser = data.username;
-        console.log(localStorage.getItem('token'));
         this.router.navigate(['hotels']);
-      }
     });
   }
 }

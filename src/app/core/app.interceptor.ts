@@ -5,6 +5,7 @@ import {
 import {Observable, throwError} from 'rxjs';
 import {HttpEvent} from '../../../node_modules/@angular/common/http/src/response';
 import {catchError, map} from 'rxjs/operators';
+import {AuthService} from '../auth/auth.service';
 
 
 const TOKEN_HEADER_KEY = 'Authorization';
@@ -12,7 +13,7 @@ const TOKEN_HEADER_KEY = 'Authorization';
 @Injectable()
 export class Interceptor implements HttpInterceptor {
 
-  constructor() {
+  constructor(private authService: AuthService) {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -22,30 +23,14 @@ export class Interceptor implements HttpInterceptor {
       authReq = req.clone({headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token)});
     }
 
-    return next.handle(authReq).pipe(
-      map((event: HttpEvent<any>) => {
-        if (event instanceof HttpResponse) {
-          console.log('event--->>>', event);
-          // this.errorDialogService.openDialog(event);
-        }
-        return event;
-      }),
-      catchError((error: HttpErrorResponse) => {
-        if (error instanceof HttpErrorResponse) {
-
-          if (error.status === 401) {
-            //this.router.navigate(['login']);
-            window.alert('nieprawidlowe dane logowania');
-          }
-        }
-        let data = {};
-        data = {
-          reason: error && error.error.reason ? error.error.reason : '',
-          status: error.status
-        };
-        console.log(data);
-        return throwError(error);
-      }));
+    return next.handle(authReq).pipe(catchError(err => {
+      if (err.status === 401) {
+        this.authService.logout();
+      }
+      const error = err.error.message || err.statusText;
+      window.alert(error);
+      return throwError(error);
+    }));
 
   }
 }

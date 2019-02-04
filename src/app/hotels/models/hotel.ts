@@ -1,7 +1,7 @@
 import {RoomType} from './RoomType';
 
 export interface Hotel {
-  id: Number;
+  id: number;
   city: String;
   street: String;
   buildingNr: String;

@@ -1,0 +1,45 @@
+<div class="container py-sm-5">
+  <mat-card>
+    <mat-card-title>Rezerwuj</mat-card-title>
+    <mat-card-content >
+      <form [formGroup]="reservationForm" class="container example-container ">
+        <div class="row">
+
+          <mat-form-field class="example-full-width  px-sm-5">
+            <input matInput [min]="minDate" formControlName="dateFrom" [matDatepicker]="dateFrom" placeholder="Od">
+            <mat-datepicker-toggle matSuffix [for]="dateFrom"></mat-datepicker-toggle>
+            <mat-datepicker #dateFrom></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput [disabled]="reservationForm.get('dateFrom').value == null" [min]="reservationForm.get('dateFrom').value !== null  ? reservationForm.get('dateFrom').value : minDate" formControlName="dateTo" [matDatepicker]="dateTo" placeholder="Do">
+            <mat-datepicker-toggle matSuffix [for]="dateTo"></mat-datepicker-toggle>
+            <mat-datepicker #dateTo></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div *ngIf="hotel">
+          <div formArrayName="roomRequests" *ngFor="let rr of roomRequests.controls; let i = index">
+            <div [formGroupName]="i">
+              <mat-icon *ngIf="i!==0" (click)="removeRoomRequest(i)">cancel</mat-icon>
+              <mat-form-field class="example-full-width  px-sm-5">
+                <mat-select placeholder="Wybierz standard pokoju" formControlName="roomTypeId" >
+                  <mat-option *ngFor="let rt of hotel.roomTypes" [value]="rt.id">
+                    {{rt.roomTypeName}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field >
+                <input matInput type="number" placeholder="Ilość pokoi" formControlName="requestedNumber"  min="1">
+              </mat-form-field>
+            </div>
+          </div >
+          <div >
+            <button *ngIf="roomRequests.length < hotel.roomTypes.length" class="btn-primary btn"  (click)="addRoomRequest()">Dodaj kolejny pokoj do rezerwacji</button>
+            <button color="primary" class="btn-primary btn"  (click)="sendReservationForm()"> rezerwuj</button>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+

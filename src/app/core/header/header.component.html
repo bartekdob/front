@@ -13,8 +13,13 @@
   </span>
   <span class="example-spacer"></span>
   <div *ngIf="isLoggedIn(); else notLoggedIn">
-    <!--<span>{{localStorage.getItem('username')}}</span>-->
-    <button mat-button (click)="logout()">Wyloguj</button>
+    <span>{{username}}</span>
+    <button mat-button [matMenuTriggerFor]="menu">  <mat-icon size="large" class="md-icon">menu</mat-icon> </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Moje rezerwacje</button>
+      <!--<button mat-menu-item>Edytuj profil</button>-->
+      <button mat-menu-item (click)="logout()">Wyloguj</button>
+    </mat-menu>
   </div>
   <ng-template #notLoggedIn>
     <div>

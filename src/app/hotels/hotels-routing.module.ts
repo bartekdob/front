@@ -4,7 +4,7 @@ import {HotelsListComponent} from './hotels-list/hotels-list.component';
 import {HotelsComponent} from './hotels.component';
 import {CommonModule} from '@angular/common';
 import {HotelDetailsComponent} from './hotel-details/hotel-details.component';
-import {ReservationComponent} from './reservation/reservation.component';
+import {ReservationComponent} from '../reservation/reservation/reservation.component';
 
 
 const routes: Route[] = [

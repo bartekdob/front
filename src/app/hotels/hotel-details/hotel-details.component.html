@@ -34,13 +34,11 @@
       <tr *ngFor="let roomType of hotel.roomTypes">
         <td>{{roomType.roomTypeName}}</td>
         <td>{{roomType.description}}</td>
-        <td>{{roomType.prize}}</td>
+        <td>{{roomType.prize | currency: 'PLN ': true}}</td>
         <td class="font-weight-bold"> Szczegóły </td>
-        <td  class="font-weight-bold"> Rezerwuj </td>
+        <td  class="font-weight-bold clickable" (click)="Reserve()">  Rezerwuj </td>
       </tr>
       </tbody>
     </table>
   </div>
-</div>
-
-
+  <app-reservation *ngIf="isLogedIn()" [hotel]="hotel"></app-reservation>
