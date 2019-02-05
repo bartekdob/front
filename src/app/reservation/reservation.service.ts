@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpResponse} from '@angular/common/http';
-import {Reservation} from './models/Reservation';
+import {ReservationRequest} from './models/ReservationRequest';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -13,7 +13,7 @@ export class ReservationService {
 
   constructor(private http: HttpClient) { }
 
-  reserve(reservation: Reservation): Observable<any> {
+  reserve(reservation: ReservationRequest): Observable<any> {
     return this.http.post(this.apiUrl + '/reserve', reservation);
   }
 

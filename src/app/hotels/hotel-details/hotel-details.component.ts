@@ -4,7 +4,7 @@ import {Hotel} from "../models/hotel";
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {ReservationService} from '../../reservation/reservation.service';
-import {Reservation} from '../../reservation/models/Reservation';
+import {ReservationRequest} from '../../reservation/models/ReservationRequest';
 import * as moment from 'moment';
 import {AuthService} from '../../auth/auth.service';
 

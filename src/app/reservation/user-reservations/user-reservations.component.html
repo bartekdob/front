@@ -1,5 +1,36 @@
-<div *ngFor="let reservation of userReservations; let i=index">
-  <p>{{reservation.reservationsOrder.totalCost}}</p>
-  <p>{{i}}</p>
+<div class="py-sm-5 example-container container card">
+  <mat-card-title class="text-center py-sm-2">Moje rezerwacje</mat-card-title>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let reservation of userReservations; let i = index">
+      <mat-expansion-panel-header >
+        <mat-panel-title>
+          <div>{{i+1}}.  <mat-icon>today</mat-icon> {{reservation.reservation[0].startDate | date: 'dd.MM.yyyy'}} - {{reservation.reservation[0].endDate | date: 'dd.MM.yyyy'}}</div>
+        </mat-panel-title>
+        <mat-panel-description>
+          <div class="row container">
+            <div class="col-sm-9">
+              <mat-icon>home</mat-icon> {{reservation.reservationsOrder.hotel.name}} <mat-icon>place</mat-icon> {{reservation.reservationsOrder.hotel.city + ' ' + reservation.reservationsOrder.hotel.street + ' ' + reservation.reservationsOrder.hotel.buildingNr}}
+            </div>
+            <div class="col-sm-3">Cena: {{reservation.reservationsOrder.totalCost | currency: 'PLN ': true}} <span class="unpayed" *ngIf="reservation.reservationsOrder.paymentId===0">Nieopłacona</span></div>
+          </div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <table class="table table-striped table-borderless table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Typ pokoju</th>
+            <th scope="col">Opis</th>
+            <th scope="col">Ilość zarezerwowanych</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let roomReservation of reservation.reservation; let j = index">
+          <td>{{roomReservation.room.roomType.roomTypeName}}</td>
+          <td>{{roomReservation.room.roomType.description}}</td>
+          <td>{{roomReservation.quantity}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>
-<p> DZIALA XD</p>

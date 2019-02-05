@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {Hotel} from './models/hotel';
 import {map} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
-import {Reservation} from '../reservation/models/Reservation';
+import {ReservationRequest} from '../reservation/models/ReservationRequest';
 
 @Injectable({
   providedIn: 'root'
