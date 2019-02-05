@@ -8,10 +8,10 @@
         </mat-panel-title>
         <mat-panel-description>
           <div class="row container">
-            <div class="col-sm-9">
+            <div class="col-lg-9">
               <mat-icon>home</mat-icon> {{reservation.reservationsOrder.hotel.name}} <mat-icon>place</mat-icon> {{reservation.reservationsOrder.hotel.city + ' ' + reservation.reservationsOrder.hotel.street + ' ' + reservation.reservationsOrder.hotel.buildingNr}}
             </div>
-            <div class="col-sm-3">Cena: {{reservation.reservationsOrder.totalCost | currency: 'PLN ': true}} <span class="unpayed" *ngIf="reservation.reservationsOrder.paymentId===0">Nieopłacona</span></div>
+            <div class="col-lg-3">Cena: {{reservation.reservationsOrder.totalCost | currency: 'PLN ': true}} <span class="unpayed" *ngIf="reservation.reservationsOrder.paymentId===0">Nieopłacona</span></div>
           </div>
         </mat-panel-description>
       </mat-expansion-panel-header>
