@@ -5,6 +5,7 @@ import {WelcomePageComponent} from './shared/welcome-page/welcome-page.component
 import {LoginComponent} from './login/login/login.component';
 import {RegisterComponent} from './login/register/register.component';
 import {UserReservationsComponent} from './reservation/user-reservations/user-reservations.component';
+import {AdminPanelComponent} from './admin/admin-panel/admin-panel.component';
 
 const routes: Route[] = [
   {path: '', pathMatch: 'full', component: WelcomePageComponent},
@@ -12,7 +13,8 @@ const routes: Route[] = [
   {path: 'register', component: RegisterComponent},
   {path: 'myReservations', component: UserReservationsComponent},
   {path: 'hotels', loadChildren: 'app/hotels/hotels.module#HotelsModule'},
-  {path: '**', component: PageNotFoundComponent}
+  {path: 'adminPanel', component: AdminPanelComponent},
+  {path: '**', component: PageNotFoundComponent},
   ]
 
 @NgModule({

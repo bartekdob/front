@@ -16,6 +16,8 @@ import {MAT_DATE_LOCALE, MatIconModule, MatInputModule, MatNativeDateModule, Mat
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ReservationService} from './reservation/reservation.service';
 import {ReservationModule} from './reservation/reservation.module';
+import {AdminService} from './admin/admin.service';
+import {AdminModule} from './admin/admin.module';
 
 
 @NgModule({
@@ -30,6 +32,7 @@ import {ReservationModule} from './reservation/reservation.module';
     SharedModule,
     CoreModule,
     LoginModule,
+    AdminModule,
     ReservationModule,
     BrowserAnimationsModule,
     MatNativeDateModule,
@@ -38,7 +41,7 @@ import {ReservationModule} from './reservation/reservation.module';
    // MatIconModule
     MaterialModulesImportModule
   ],
-  providers: [HotelService, AuthService, ReservationService, {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true},
+  providers: [HotelService, AuthService, ReservationService, AdminService, {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true},
     {provide: MAT_DATE_LOCALE, useValue: 'pl-PL'}],
   bootstrap: [AppComponent]
 })

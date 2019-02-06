@@ -5,6 +5,7 @@ import {HotelsComponent} from './hotels.component';
 import {CommonModule} from '@angular/common';
 import {HotelDetailsComponent} from './hotel-details/hotel-details.component';
 import {ReservationComponent} from '../reservation/reservation/reservation.component';
+import {HotelCreateComponent} from './hotel-create/hotel-create.component';
 
 
 const routes: Route[] = [
@@ -19,10 +20,6 @@ const routes: Route[] = [
       {
         path: ':id',
         component: <any>HotelDetailsComponent
-      },
-      {
-        path: ':id/reserve',
-        component: <any>ReservationComponent
       }
     ]
   }

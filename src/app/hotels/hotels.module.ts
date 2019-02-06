@@ -17,12 +17,13 @@ import {
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import { ReservationComponent } from '../reservation/reservation/reservation.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HotelCreateComponent } from './hotel-create/hotel-create.component';
 
 @NgModule({
-  declarations: [HotelsListComponent, HotelsComponent, HotelDetailsComponent, ReservationComponent],
+  declarations: [HotelsListComponent, HotelsComponent, HotelDetailsComponent, ReservationComponent, HotelCreateComponent],
   imports: [
     CommonModule, HotelsRoutingModule, MatTabsModule, MatIconModule, MatCardModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatSelectModule, FormsModule, ReactiveFormsModule, MatMomentDateModule
   ],
-  exports: [HotelsListComponent, HotelsComponent, HotelDetailsComponent, ReservationComponent]
+  exports: [HotelsListComponent, HotelsComponent, HotelDetailsComponent, ReservationComponent, HotelCreateComponent]
 })
 export class HotelsModule { }
