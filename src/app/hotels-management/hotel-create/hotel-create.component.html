@@ -1,0 +1,191 @@
+<div class="py-sm-5 example-container container card">
+  <div class="container example-container">
+    <div class="text-center py-sm-3">
+      <mat-card-title class="text-center ">Utwórz nowy hotel</mat-card-title>
+    </div>
+
+    <div>
+      <mat-horizontal-stepper [linear]="false" #stepper>
+        <mat-step [stepControl]="hotelFormGroup" >
+          <form [formGroup]="hotelFormGroup">
+            <div class="row">
+              <ng-template matStepLabel>Wprowadź dane hotelu</ng-template>
+              <div class="col-sm-12">
+                <mat-icon>hotel</mat-icon>
+                <mat-form-field class="col-sm-11">
+                  <input matInput placeholder="Nazwa hotelu" formControlName="name" required>
+                </mat-form-field>
+              </div>
+              <div class="col-sm-12">
+                <mat-icon>description</mat-icon>
+                <mat-form-field class="col-sm-11">
+                  <textarea matInput placeholder="Opis" required formControlName="description"></textarea>
+                </mat-form-field>
+              </div>
+              <div class="col-sm-12">
+                <mat-icon>location_city</mat-icon>
+                <mat-form-field class="col-sm-11">
+                  <input matInput placeholder="Miasto" formControlName="city" required>
+                </mat-form-field>
+              </div>
+              <div class="col-sm-12">
+                <mat-icon>location_on</mat-icon>
+                <mat-form-field class="col-sm-11">
+                  <input matInput placeholder="Kod pocztowy" formControlName="zipCode" required>
+                </mat-form-field>
+              </div>
+              <div class="col-sm-12 mx-sm-4">
+                <mat-form-field class="col-sm-11">
+                  <input matInput placeholder="Ulica" formControlName="street" required>
+                </mat-form-field>
+                <mat-form-field class="col-sm-11">
+                  <input matInput placeholder="Number budynku" formControlName="buildingNr" required>
+                </mat-form-field>
+              </div>
+
+            </div>
+
+            <div class="py-sm-5 float-right mx-sm-5">
+              <button mat-button matStepperNext>Dalej</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="typesFormGroup">
+          <ng-template matStepLabel>Skonfiguruj pokoje</ng-template>
+          <form [formGroup]="typesFormGroup" class="container example-container ">
+            <mat-accordion>
+              <div formArrayName="roomTypes" *ngFor="let rt of roomTypes.controls; let i = index" class="row">
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      {{i+1}}. {{roomTypes.at(i).get('roomTypeName').value.toString().length == 0 ? 'Skonfiguruj typ' :
+                      roomTypes.at(i).get('roomTypeName').value.toString()}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      {{roomTypes.at(i).get('quantity').dirty ? 'ilość: ' +
+                      roomTypes.at(i).get('quantity').value.toString() : 'Nie wskazano ilości pokoi tego typu'}}
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <div [formGroupName]="i">
+                    <div class="col-sm-12 ">
+                      <mat-form-field class="col-sm-12">
+                        <input matInput placeholder="Nazwa" formControlName="roomTypeName" required>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-sm-12">
+                      <mat-form-field class="col-sm-12">
+                        <textarea matInput placeholder="Opis" required formControlName="description"></textarea>
+                      </mat-form-field>
+                    </div>
+                    <div class="container">
+                      <mat-form-field class="col-md-2">
+                        <input matInput type="number" placeholder="Ilość łazienek" formControlName="bathroomCount"
+                               min="0" max="9">
+                      </mat-form-field>
+                      <mat-form-field class="col-md-2">
+                        <input matInput type="number" placeholder="Ilość łóżek pojedyńczych"
+                               formControlName="singleBedCount" min="0" max="9">
+                      </mat-form-field>
+                      <mat-form-field class="col-md-2">
+                        <input matInput type="number" placeholder="Ilość łóżek podwójnych"
+                               formControlName="doubleBedCount" min="0" max="9">
+                      </mat-form-field>
+                      <mat-form-field class="col-md-2">
+                        <input matInput type="number" placeholder="cena za noc" formControlName="prize" min="0" required>
+                    <!--    <span matSuffix>PLN</span>-->
+                      </mat-form-field>
+                      <mat-checkbox formControlName="tv" class="col-md-2">TV</mat-checkbox>
+                      <mat-form-field class="col-md-2">
+                        <input matInput type="number" placeholder="Ilość pokoi" formControlName="quantity" min="0"
+                               max="9999" required>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 text-center ">
+                    <button *ngIf="i>0" mat-button color="accent" (click)="removeRoomType(i)">Usuń</button>
+                  </div>
+                </mat-expansion-panel>
+              </div>
+            </mat-accordion>
+          </form>
+          <div class="container-fluid">
+            <div class="py-sm-5 row">
+              <div class="text-left col-sm-12 col-md-4">
+                <button mat-button matStepperPrevious>Wstecz</button>
+              </div>
+              <div class=" col-sm-12 col-md-4 text-center">
+                <button mat-button color="primary" (click)="addRoomType()">Dodaj kolejny typ</button>
+              </div>
+              <div class="text-right col-sm-12 col-md-4">
+                <button mat-button matStepperNext>Dalej</button>
+              </div>
+            </div>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Podsumowanie</ng-template>
+          <div class="text-center">Sprawdź poprawność wprowadzonych danych</div>
+          <mat-list>
+            <div class="row">
+              <mat-icon>hotel</mat-icon>
+              <mat-list-item class="col-sm-11"><span class="font-weight-light">Nazwa:</span>
+                {{hotelFormGroup.get('name').value.toString()}}
+              </mat-list-item>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="row">
+              <mat-icon>description</mat-icon>
+              <mat-list-item class="col-sm-11"><span class="font-weight-light">Opis:</span>
+                {{hotelFormGroup.get('description').value.toString().slice(0,80)}}
+                {{hotelFormGroup.get('description').value.toString().length > 100 ? '...': ''}}
+              </mat-list-item>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="row">
+              <mat-icon>location_city</mat-icon>
+              <mat-list-item class="col-sm-11"><span class="font-weight-light">Adres:</span>
+                {{hotelFormGroup.get('city').value.toString()}}, {{hotelFormGroup.get('street').value.toString()}}
+                {{hotelFormGroup.get('buildingNr').value.toString()}}
+              </mat-list-item>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="row">
+              <mat-icon>location_on</mat-icon>
+              <mat-list-item class="col-sm-11"><span class="font-weight-light">Kod pocztowy:</span>
+                {{hotelFormGroup.get('zipCode').value.toString()}}
+              </mat-list-item>
+            </div>
+            <mat-divider></mat-divider>
+            <div *ngFor="let rt of roomTypes.controls; let i = index;">
+              <div class="row">
+                <mat-icon>meeting_room</mat-icon>
+                <mat-list-item class="col-sm-11"><span class="font-weight-light">Typ pokoju:</span>
+                  {{rt.get('roomTypeName').value.toString()}} x {{rt.get('quantity').value.toString()}}
+                </mat-list-item>
+              </div>
+              <mat-divider></mat-divider>
+            </div>
+          </mat-list>
+          <div class="container-fluid">
+            <div class="py-sm-4 row">
+              <div class="text-left col-sm-12 col-md-6">
+                <button mat-button matStepperPrevious>Cofnij</button>
+              </div>
+              <div class="text-right col-sm-12 col-md-6">
+                <button mat-button color="primary" (click)="createHotel()">Utwórz hotel</button>
+              </div>
+            </div>
+          </div>
+    </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          sukces
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+    </div>
+  </div>
+</div>

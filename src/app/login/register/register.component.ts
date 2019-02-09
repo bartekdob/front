@@ -22,8 +22,8 @@ export class RegisterComponent implements OnInit {
   }
 
   getErrorMessage() {
-    return this.email.hasError('required') ? 'wprowadź wartość - pole obowiązkowe' :
-      this.email.hasError('email') ? 'nieprawidłowy adres email' :
+    return this.userForm.get('email').hasError('required') ? 'wprowadź wartość - pole obowiązkowe' :
+      this.userForm.get('email').hasError('email') ? 'nieprawidłowy adres email' :
         '';
   }
 

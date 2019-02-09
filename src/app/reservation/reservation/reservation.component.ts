@@ -55,7 +55,7 @@ export class ReservationComponent implements OnInit{
   sendReservationForm(): void {
     let formData = Object.assign({}, this.reservationForm.value);
     formData.hotelId = this.hotel.id;
-    formData.totalCost = 500;
+    formData.totalCost = 500; // TO DO <- rzeczywisty koszt
     formData.dateFrom.add(1, 'hour');
     formData.dateTo.add(1, 'hour');
     this.reservationService.reserve(formData).subscribe();

@@ -12,7 +12,7 @@
         <input formControlName="username" matInput placeholder="nazwa użytkownika">
       </mat-form-field>
       <mat-form-field>
-        <input formControlName="email"  matInput placeholder="email"  required>
+        <input formControlName="email"  matInput placeholder="email"  required email>
         <mat-error *ngIf="userForm.get('email').invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
       <mat-form-field>

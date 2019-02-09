@@ -15,7 +15,7 @@ export class AuthService {
 
   private apiUrl: string = 'http://localhost:8080';
 
-  private _isLoggedIn: boolean;
+  private _isLoggedIn: boolean = false;
   private _currentUser: string;
 
   login(ussername: string, password: string): Observable<any> {

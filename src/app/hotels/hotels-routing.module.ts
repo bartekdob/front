@@ -2,10 +2,7 @@ import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import {HotelsListComponent} from './hotels-list/hotels-list.component';
 import {HotelsComponent} from './hotels.component';
-import {CommonModule} from '@angular/common';
 import {HotelDetailsComponent} from './hotel-details/hotel-details.component';
-import {ReservationComponent} from '../reservation/reservation/reservation.component';
-import {HotelCreateComponent} from './hotel-create/hotel-create.component';
 
 
 const routes: Route[] = [

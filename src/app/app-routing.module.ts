@@ -6,6 +6,7 @@ import {LoginComponent} from './login/login/login.component';
 import {RegisterComponent} from './login/register/register.component';
 import {UserReservationsComponent} from './reservation/user-reservations/user-reservations.component';
 import {AdminPanelComponent} from './admin/admin-panel/admin-panel.component';
+import {HotelCreateComponent} from './hotels-management/hotel-create/hotel-create.component';
 
 const routes: Route[] = [
   {path: '', pathMatch: 'full', component: WelcomePageComponent},
@@ -13,6 +14,7 @@ const routes: Route[] = [
   {path: 'register', component: RegisterComponent},
   {path: 'myReservations', component: UserReservationsComponent},
   {path: 'hotels', loadChildren: 'app/hotels/hotels.module#HotelsModule'},
+  {path: 'manage', loadChildren: 'app/hotels-management/hotels-management.module#HotelsManagementModule'},
   {path: 'adminPanel', component: AdminPanelComponent},
   {path: '**', component: PageNotFoundComponent},
   ]

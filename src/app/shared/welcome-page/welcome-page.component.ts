@@ -13,7 +13,7 @@ export class WelcomePageComponent implements OnInit {
   ngOnInit() {
   }
 
-  asd(url: String){
+  navigate(url: String){
     this.router.navigate([url]);
   }
 
