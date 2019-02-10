@@ -14,7 +14,8 @@ export class HotelCreateComponent implements OnInit {
   hotelFormGroup: FormGroup;
   typesFormGroup: FormGroup;
   @ViewChild('stepper') stepper: ElementRef;
-
+  @ViewChild('CardTitle') cardTitle: ElementRef;
+  hotelId: number;
   constructor(private formBuilder: FormBuilder, private hotelService: HotelService) { }
 
   ngOnInit() {
@@ -73,8 +74,11 @@ export class HotelCreateComponent implements OnInit {
     this.hotelService.createHotel(formsData).subscribe( resp => {
       if(resp.ok)
       {
-        let test = <MatHorizontalStepper><unknown>this.stepper;
-        test.next();
+        let stepper = <MatHorizontalStepper><unknown>this.stepper;
+        stepper.next();
+        let cardTitle = this.cardTitle.nativeElement;
+        cardTitle.innerText = 'Prawie gotowe, dodaj zdjęcia hotelu.';
+        this.hotelId = resp.body.hotelId;
       }}
     );
   }

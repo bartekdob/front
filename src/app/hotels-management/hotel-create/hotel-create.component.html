@@ -1,12 +1,14 @@
+<script
+  src="../../../../node_modules/angular-material-fileupload/node_modules/@angular/core/src/render3/ng_dev_mode.d.ts"></script>
 <div class="py-sm-5 example-container container card">
   <div class="container example-container">
     <div class="text-center py-sm-3">
-      <mat-card-title class="text-center ">Utwórz nowy hotel</mat-card-title>
+      <mat-card-title class="text-center" #CardTitle>Utwórz nowy hotel</mat-card-title>
     </div>
 
     <div>
-      <mat-horizontal-stepper [linear]="false" #stepper>
-        <mat-step [stepControl]="hotelFormGroup" >
+      <mat-horizontal-stepper [linear]="true" #stepper>
+        <mat-step [stepControl]="hotelFormGroup">
           <form [formGroup]="hotelFormGroup">
             <div class="row">
               <ng-template matStepLabel>Wprowadź dane hotelu</ng-template>
@@ -91,8 +93,9 @@
                                formControlName="doubleBedCount" min="0" max="9">
                       </mat-form-field>
                       <mat-form-field class="col-md-2">
-                        <input matInput type="number" placeholder="cena za noc" formControlName="prize" min="0" required>
-                    <!--    <span matSuffix>PLN</span>-->
+                        <input matInput type="number" placeholder="cena za noc" formControlName="prize" min="0"
+                               required>
+                        <!--    <span matSuffix>PLN</span>-->
                       </mat-form-field>
                       <mat-checkbox formControlName="tv" class="col-md-2">TV</mat-checkbox>
                       <mat-form-field class="col-md-2">
@@ -176,16 +179,38 @@
               </div>
             </div>
           </div>
-    </mat-step>
+        </mat-step>
         <mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-          sukces
+            <ng-template matStepLabel>Wybierz główne zdjęcie</ng-template>
+          <div class="text-center">
+            <h5>Wybierz zdjęcie, które będzie reprezentować hotel na liście</h5>
+          </div>
           <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
+            <app-upload class="py-sm-4" [urlPart]="'/uploadHotelMainPhoto/'+hotelId"></app-upload>
+            <!--<app-dialog [urlPart]="'/uploadHotelPhotos/'+hotelId"></app-dialog>-->
+          </div>
+            <div class="container-fluid">
+              <div class="py-sm-5 row">
+                <div class="text-right col-sm-12">
+                  <button mat-button matStepperNext>Dalej</button>
+                </div>
+              </div>
+            </div>
+          </mat-step>
+        <mat-step>
+          <div class="text-center">
+            <h5>Wybierz pozostałe zdjęcia</h5>
+          </div>
+          <ng-template matStepLabel>Dodaj pozostałe zdjęcia</ng-template>
+          <div>
+            <app-upload [urlPart]="'/uploadHotelPhotos/'+hotelId"></app-upload>
+            <!--<app-dialog [urlPart]="'/uploadHotelPhotos/'+hotelId"></app-dialog>-->
+          </div>
+          <div class="py-sm-4 d-flex justify-content-center align-items-center">
+            <button class="" [routerLink]="['/manage']" mat-button color="primary">Zakończ</button>
           </div>
         </mat-step>
-    </mat-horizontal-stepper>
+      </mat-horizontal-stepper>
     </div>
   </div>
 </div>
