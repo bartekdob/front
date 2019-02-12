@@ -1,21 +1,5 @@
-<div class="py-sm-5 example-container container card">
-  <mat-card-title class="text-center py-sm-2">Lista użytkowników</mat-card-title>
-  <table class="table table-striped table-borderless table-hover">
-    <thead>
-    <tr>
-      <th scope="col">Nazwa użytkownika</th>
-      <th scope="col">E-mail</th>
-      <th scope="col">Imię</th>
-      <th scope="col">Nazwisko</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let userDetail of userDetails; let i = index">
-      <td>{{userDetail.username}}</td>
-      <td>{{userDetail.email}}</td>
-      <td>{{userDetail.firstName}}</td>
-      <td>{{userDetail.lastName}}</td>
-    </tr>
-    </tbody>
-  </table>
+<div class="py-sm-5 example-container container card text-center">
+  <h3 [routerLink]="['/admin-panel/manage-users']">Zarządzaj kontami</h3>
+  <h3></h3>
+
 </div>

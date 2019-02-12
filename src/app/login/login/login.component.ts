@@ -24,6 +24,7 @@ export class LoginComponent {
         this.authService.isLoggedIn = true;
         localStorage.setItem('username', data.username);
         this.authService.currentUser = data.username;
+        this.authService.roles = data.roles;
         this.router.navigate(['hotels']);
     });
   }

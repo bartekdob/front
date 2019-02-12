@@ -5,6 +5,7 @@ import { HotelsComponent } from './hotels.component';
 import {HotelsRoutingModule} from './hotels-routing.module';
 import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
 import {
+  MatButtonModule,
   MatCardModule,
   MatDatepickerModule,
   MatFormFieldModule,
@@ -16,13 +17,14 @@ import {
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
 import { ReservationComponent } from '../reservation/reservation/reservation.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ReservationModule} from '../reservation/reservation.module';
 
 
 @NgModule({
-  declarations: [HotelsListComponent, HotelsComponent, HotelDetailsComponent, ReservationComponent],
+  declarations: [HotelsListComponent, HotelsComponent, HotelDetailsComponent],
   imports: [
-    CommonModule, HotelsRoutingModule, MatTabsModule, MatIconModule, MatCardModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatSelectModule, FormsModule, ReactiveFormsModule, MatMomentDateModule
+    CommonModule, HotelsRoutingModule, MatTabsModule, MatIconModule, MatCardModule, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatSelectModule, FormsModule, ReactiveFormsModule, MatMomentDateModule, ReservationModule, MatButtonModule
   ],
-  exports: [HotelsListComponent, HotelsComponent, HotelDetailsComponent, ReservationComponent]
+  exports: [HotelsListComponent, HotelsComponent, HotelDetailsComponent]
 })
 export class HotelsModule { }

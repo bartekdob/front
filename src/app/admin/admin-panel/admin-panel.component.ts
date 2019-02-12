@@ -9,16 +9,11 @@ import {UserDetails} from '../models/UserDetails';
 })
 export class AdminPanelComponent implements OnInit {
 
-  userDetails: UserDetails[];
-
-  constructor(private adminService: AdminService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.loadUserDetails();
   }
 
-  loadUserDetails(): void {
-    this.adminService.getAllUsers().subscribe(details=> this.userDetails = details)
-  }
+
 
 }

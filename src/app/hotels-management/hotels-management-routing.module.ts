@@ -20,7 +20,7 @@ const routes: Route[] = [
         component: <any>HotelCreateComponent
       },
       {
-        path: 'editHotel/:id',
+        path: 'edit-hotel/:id',
         component: <any>ManagedHotelEditComponent
       },
       {

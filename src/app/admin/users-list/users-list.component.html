@@ -1,0 +1,46 @@
+<div class="py-sm-5 example-container container-fluid card">
+  <mat-card-title class="text-center py-sm-2">Lista użytkowników</mat-card-title>
+
+  <!--<form [formGroup]="roleForm">
+    <mat-form-field>
+      <mat-select>
+        <mat-option>
+
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </form>
+  -->
+  <table class="table table-striped table-borderless table-hover align-content-center ">
+    <thead>
+    <tr>
+      <th scope="col">Nazwa użytkownika</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Imię</th>
+      <th scope="col">Nazwisko</th>
+      <th scope="col">Role</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let userDetail of userDetails; let i = index">
+      <td>{{userDetail.username}}</td>
+      <td>{{userDetail.email}}</td>
+      <td>{{userDetail.firstName}}</td>
+      <td>{{userDetail.lastName}}</td>
+      <td>
+        <div *ngFor="let role of userDetail.roles">
+          {{role.name}}
+        </div>
+      </td>
+      <td>
+        <div class="d-flex">
+          <mat-icon style="cursor: pointer">{{userIsManager(userDetail)? 'arrow_downward' : 'arrow_upward'}}</mat-icon>
+          <mat-icon style="cursor: pointer" (click)="deleteUser(userDetail)">delete</mat-icon>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

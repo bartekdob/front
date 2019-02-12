@@ -12,9 +12,9 @@
             <div class="card-body">
               <p class="card-text">{{hotel.name}} <br> {{hotel.city}}, {{hotel.street}} {{hotel.buildingNr}}  </p>
               <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group ">
-                  <button type="button" (click)="goToHotelDetails(hotel)" class="btn btn-sm btn-outline-primary btn-group-lg">Rezerwuj</button>
-                </div> <small class="text-muted">5/5 gwiazdek Micheline</small>
+                <div class="">
+                  <button mat-stroked-button color="primary" (click)="goToHotelDetails(hotel)" >Zobacz ofertę</button>
+                </div>
               </div>
             </div>
           </div>

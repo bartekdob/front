@@ -31,4 +31,8 @@ export class HotelService {
 
   }
 
+  deleteHotel(hotelId: number): Promise<Observable<any>> {
+    return this.http.delete<any>(`${this.apiUrl}/${hotelId}`).toPromise();
+  }
+
 }

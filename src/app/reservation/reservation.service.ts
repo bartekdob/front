@@ -13,12 +13,16 @@ export class ReservationService {
 
   constructor(private http: HttpClient) { }
 
-  reserve(reservation: ReservationRequest): Observable<any> {
-    return this.http.post(this.apiUrl + '/reserve', reservation);
+  reserve(reservation: ReservationRequest): Observable<HttpResponse<any>> {
+    return this.http.post(this.apiUrl + '/reserve', reservation, {observe: 'response'});
   }
 
   getUsersReservations(): Observable<any> {
     return this.http.get(this.apiUrl + '/userReservations');
+  }
+
+  checkAvailability(reservation: ReservationRequest): Observable<HttpResponse<any>> {
+    return this.http.post(this.apiUrl + '/checkAvailability', reservation, {observe: 'response'});
   }
 
 }

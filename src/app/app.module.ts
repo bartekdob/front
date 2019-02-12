@@ -19,6 +19,8 @@ import {ReservationModule} from './reservation/reservation.module';
 import {AdminService} from './admin/admin.service';
 import {AdminModule} from './admin/admin.module';
 import { HotelManagementComponent } from './hotels-management/hotel-management.component';
+import {ManagerCanLoadGuard} from './auth/manager-can-load.guard';
+import {AdminCanLoadGuard} from './auth/admin-can-load.guard';
 
 
 @NgModule({
@@ -33,12 +35,11 @@ import { HotelManagementComponent } from './hotels-management/hotel-management.c
     SharedModule,
     CoreModule,
     LoginModule,
-    AdminModule,
     ReservationModule,
     BrowserAnimationsModule
   ],
   providers: [HotelService, AuthService, ReservationService, AdminService, {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true},
-    {provide: MAT_DATE_LOCALE, useValue: 'pl-PL'}],
+    {provide: MAT_DATE_LOCALE, useValue: 'pl-PL'}, ManagerCanLoadGuard, AdminCanLoadGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

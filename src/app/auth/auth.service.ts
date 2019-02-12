@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Interceptor} from '../core/app.interceptor';
 import {HttpClient} from '@angular/common/http';
-import {User} from '../login/login/models/User';
+import {User} from '../login/models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +17,7 @@ export class AuthService {
 
   private _isLoggedIn: boolean = false;
   private _currentUser: string;
+  private _roles: string[];
 
   login(ussername: string, password: string): Observable<any> {
     const credentials = {username: ussername, password: password};
@@ -49,5 +50,14 @@ export class AuthService {
 
   set currentUser(value: string) {
     this._currentUser = value;
+  }
+
+
+  get roles(): string[] {
+    return this._roles;
+  }
+
+  set roles(value: string[]) {
+    this._roles = value;
   }
 }

@@ -4,22 +4,22 @@ import {ActivatedRoute, Route} from '@angular/router';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import * as moment from 'moment';
 import {ReservationService} from '../reservation.service';
+import {MatHorizontalStepper} from '@angular/material';
 
 @Component({
   selector: 'app-reservation',
   templateUrl: './reservation.component.html',
   styleUrls: ['./reservation.component.less']
 })
-export class ReservationComponent implements OnInit{
+export class ReservationComponent implements OnInit {
 
   minDate = new Date();
   @Input() hotel: Hotel;
   reservationForm: FormGroup;
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private reservationService: ReservationService) {
+  }
 
-
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private reservationService: ReservationService) { }
-
-  ngOnInit(){
+  ngOnInit() {
     this.reservationForm = this.buildReservationForm();
   }
 
@@ -54,11 +54,50 @@ export class ReservationComponent implements OnInit{
 
   sendReservationForm(): void {
     let formData = Object.assign({}, this.reservationForm.value);
+    let totalCost = 0;
     formData.hotelId = this.hotel.id;
-    formData.totalCost = 500; // TO DO <- rzeczywisty koszt
+    formData.roomRequests.forEach(rr => {
+      this.hotel.roomTypes.forEach(rt =>{
+        if(rt.id == rr.roomTypeId)
+          totalCost += rt.prize * rr.requestedNumber;
+      })
+    })
+    formData.totalCost = totalCost;
     formData.dateFrom.add(1, 'hour');
     formData.dateTo.add(1, 'hour');
-    this.reservationService.reserve(formData).subscribe();
+    this.reservationService.reserve(formData).subscribe(resp => {
+        if (resp.ok) {
+          window.alert('Dokonano rezerwacji, jest ona teraz widoczna w panelu "Moje rezerwacje".');
+        }
+        else {
+          window.alert('Brak wymaganych pokoi w podanym terminie');
+        }
+      }
+    );
   }
+
+  checkAvailability(): void {
+    let formData = Object.assign({}, this.reservationForm.value);
+    let totalCost = 0;
+    formData.hotelId = this.hotel.id;
+    formData.roomRequests.forEach(rr => {
+      this.hotel.roomTypes.forEach(rt =>{
+        if(rt.id == rr.roomTypeId)
+          totalCost += rt.prize * rr.requestedNumber;
+      })
+    })
+    formData.totalCost = totalCost;
+    formData.dateFrom.add(1, 'hour');
+    formData.dateTo.add(1, 'hour');
+    this.reservationService.checkAvailability(formData).subscribe(resp=>{
+      if (resp.ok){
+        window.alert('Rezerwacja w podanych dniach jest możliwa');
+      }
+      else{
+
+      }
+    });
+  }
+
 
 }

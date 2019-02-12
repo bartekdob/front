@@ -16,4 +16,12 @@ export class AdminService {
     return this.http.get(this.apiUrl+'/users');
   }
 
+  getRoles(): Observable<any> {
+    return this.http.get(this.apiUrl+'/getAllRoles');
+  }
+
+  deleteUser(userId: number): Promise<Observable<any>> {
+    return this.http.delete<any>(`${this.apiUrl}/users/${userId}`).toPromise();
+  }
+
 }

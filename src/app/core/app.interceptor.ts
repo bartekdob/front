@@ -6,6 +6,7 @@ import {Observable, throwError} from 'rxjs';
 import {HttpEvent} from '../../../node_modules/@angular/common/http/src/response';
 import {catchError, map} from 'rxjs/operators';
 import {AuthService} from '../auth/auth.service';
+import {doesNotThrow} from 'assert';
 
 
 const TOKEN_HEADER_KEY = 'Authorization';
@@ -29,6 +30,7 @@ export class Interceptor implements HttpInterceptor {
       }
       const error = err.error.message || err.statusText;
       window.alert(error);
+      //return doesNotThrow(err);
       return throwError(error);
     }));
 

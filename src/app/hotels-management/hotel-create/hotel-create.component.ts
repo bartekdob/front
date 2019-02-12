@@ -51,9 +51,9 @@ export class HotelCreateComponent implements OnInit {
       singleBedCount: 1,
       doubleBedCount: 0,
       bathroomCount: 1,
-      prize: '',
+      prize: 50,
       tv: true,
-      quantity: 0
+      quantity: 1
     })
   }
 

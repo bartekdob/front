@@ -1,13 +1,15 @@
-<div class="container py-sm-5">
+<div class="container-fluid mat-card py-sm-5">
   <div *ngIf="hotel" class="row">
-    <div class="col-md-4">
-      <h2 class="text-center">{{hotel.name}}</h2>
-      <h4 class="text-center ">{{hotel.city}}, {{hotel.street}} {{hotel.buildingNr}}</h4>
-    </div>
-    <div  class="col-md-8">
+    <div class="row container-fluid">
+      <div class="col-md-6 col-sm-12">
+        <h2 class="text-center col-sm-12">{{hotel.name}}</h2>
+        <h4 class="text-center col-sm-12">{{hotel.city}}, {{hotel.street}} {{hotel.buildingNr}}</h4>
+        <p class="col-sm-12">{{hotel.description}}</p>
+      </div>
+      <div class="col-sm-12 col-md-6 text-center">
       <mat-tab-group class="row">
-        <mat-tab  *ngFor="let rP of hotel.roomPhotos; let i = index">
-          <ng-template class="col-sm-1" mat-tab-label>
+        <mat-tab *ngFor="let rP of hotel.roomPhotos; let i = index">
+          <ng-template  mat-tab-label>
             <mat-icon class="example-tab-icon">insert_photo</mat-icon>
             {{i+1}}
           </ng-template>
@@ -15,11 +17,8 @@
         </mat-tab>
       </mat-tab-group>
     </div>
-    <div class="row">
-      <div class="col-sm-12 text-justify">
-        {{hotel.description}}
-      </div>
     </div>
+    <div class="container">
     <table class="my-5 table table-striped table-hover table-borderless">
       <thead>
       <tr>
@@ -35,10 +34,11 @@
         <td>{{roomType.roomTypeName}}</td>
         <td>{{roomType.description}}</td>
         <td>{{roomType.prize | currency: 'PLN ': true}}</td>
-        <td class="font-weight-bold"> Szczegóły </td>
-        <td  class="font-weight-bold clickable" (click)="Reserve()">  Rezerwuj </td>
+        <td class="font-weight-bold"> Szczegóły</td>
+        <td class="font-weight-bold clickable" (click)="Reserve()"> Rezerwuj</td>
       </tr>
       </tbody>
     </table>
+    </div>
   </div>
-  <app-reservation *ngIf="isLogedIn()" [hotel]="hotel"></app-reservation>
+  <app-reservation [hotel]="hotel"></app-reservation>

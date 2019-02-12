@@ -17,6 +17,7 @@ import {
 } from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 import {UploadModule} from '../upload/upload.module';
+import {ReservationModule} from '../reservation/reservation.module';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import {UploadModule} from '../upload/upload.module';
   imports: [
     CommonModule, HotelsManagementRoutingModule,
     MatCardModule, MatStepperModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatExpansionModule, MatCheckboxModule, MatDividerModule, MatListModule,
-    UploadModule
+    UploadModule, ReservationModule
   ],
   exports: [HotelCreateComponent, ManagedHotelEditComponent, ManagedHotelsListComponent, VirtualReceptionComponent]
 })

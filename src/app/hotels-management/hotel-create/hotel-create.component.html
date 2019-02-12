@@ -131,14 +131,14 @@
           <mat-list>
             <div class="row">
               <mat-icon>hotel</mat-icon>
-              <mat-list-item class="col-sm-11"><span class="font-weight-light">Nazwa:</span>
+              <mat-list-item class="col-sm-11"><span class="font-weight-light">Nazwa: </span>
                 {{hotelFormGroup.get('name').value.toString()}}
               </mat-list-item>
             </div>
             <mat-divider></mat-divider>
             <div class="row">
               <mat-icon>description</mat-icon>
-              <mat-list-item class="col-sm-11"><span class="font-weight-light">Opis:</span>
+              <mat-list-item class="col-sm-11"><span class="font-weight-light">Opis: </span>
                 {{hotelFormGroup.get('description').value.toString().slice(0,80)}}
                 {{hotelFormGroup.get('description').value.toString().length > 100 ? '...': ''}}
               </mat-list-item>
@@ -146,7 +146,7 @@
             <mat-divider></mat-divider>
             <div class="row">
               <mat-icon>location_city</mat-icon>
-              <mat-list-item class="col-sm-11"><span class="font-weight-light">Adres:</span>
+              <mat-list-item class="col-sm-11"><span class="font-weight-light">Adres: </span>
                 {{hotelFormGroup.get('city').value.toString()}}, {{hotelFormGroup.get('street').value.toString()}}
                 {{hotelFormGroup.get('buildingNr').value.toString()}}
               </mat-list-item>
@@ -154,7 +154,7 @@
             <mat-divider></mat-divider>
             <div class="row">
               <mat-icon>location_on</mat-icon>
-              <mat-list-item class="col-sm-11"><span class="font-weight-light">Kod pocztowy:</span>
+              <mat-list-item class="col-sm-11"><span class="font-weight-light">Kod pocztowy: </span>
                 {{hotelFormGroup.get('zipCode').value.toString()}}
               </mat-list-item>
             </div>
@@ -162,7 +162,7 @@
             <div *ngFor="let rt of roomTypes.controls; let i = index;">
               <div class="row">
                 <mat-icon>meeting_room</mat-icon>
-                <mat-list-item class="col-sm-11"><span class="font-weight-light">Typ pokoju:</span>
+                <mat-list-item class="col-sm-11"><span class="font-weight-light">Typ pokoju: </span>
                   {{rt.get('roomTypeName').value.toString()}} x {{rt.get('quantity').value.toString()}}
                 </mat-list-item>
               </div>
